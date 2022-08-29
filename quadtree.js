@@ -63,27 +63,27 @@ insert ( point ){
 // this.northwest.insert ( point );
 // this.southeast.insert ( point );
 // this.southwest.insert ( point );
-36
-37 }
-38
-39 show () {
-40 stroke (255) ;
-41 strokeWeight (1) ;
-42 noFill () ;
-43 rectMode ( CENTER );
-44 rect ( this.boundary.x , this.boundary.y , this.boundary.w *2 , this.boundary.h
+
+}
+
+show () {
+stroke (255) ;
+strokeWeight (1) ;
+noFill () ;
+rectMode ( CENTER );
+rect ( this.boundary.x , this.boundary.y , this.boundary.w *2 , this.boundary.h
 
 *2) ;
-45 if( this.divided ) {
-46 this.northeast.show () ;
-47 this.northwest.show () ;
-48 this.southeast.show () ;
-49 this.southwest.show () ;
-50 }
-51
-52 for (let p of this.points ){
-53 strokeWeight (4) ;
-54 point (p.x , p.y );
-55 }
-56 }
-57 }
+if( this.divided ) {
+this.northeast.show () ;
+this.northwest.show () ;
+this.southeast.show () ;
+this.southwest.show () ;
+}
+
+for (let p of this.points ){
+strokeWeight (4) ;
+point (p.x , p.y );
+}
+}
+}
