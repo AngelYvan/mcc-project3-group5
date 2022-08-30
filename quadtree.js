@@ -64,26 +64,47 @@ insert ( point ){
 // this.southeast.insert ( point );
 // this.southwest.insert ( point );
 
+     query (range , found ){
+        if(!found){
+            found=[];
+        }
+        if(!this.boundary.intersects(range)){
+            return found;
+        }
+        else{
+          for(let point of this.points){
+            if(range.contains(point)){
+                found.push(point)
+            }
+          }
+          if(this.divided){            
+            this.northeast.query(range,found);
+            this.northwest.query(range,found);
+            this.southeast.query(range,found);
+            this.southwest.query(range,found);
+          } 
+          return found;
+        }
+    }
 }
 
 show () {
-stroke (255) ;
-strokeWeight (1) ;
-noFill () ;
-rectMode ( CENTER );
-rect ( this.boundary.x , this.boundary.y , this.boundary.w *2 , this.boundary.h
+    stroke (255) ;
+    strokeWeight (1) ;
+    noFill () ;
+    rectMode ( CENTER );
+    rect ( this.boundary.x , this.boundary.y , this.boundary.w *2 , this.boundary.h *2) ;
+    if( this.divided ) {
+        this.northeast.show () ;
+        this.northwest.show () ;
+        this.southeast.show () ;
+        this.southwest.show () ;
+        }
+    for (let p of this.points ){
+        strokeWeight (4) ;
+        point (p.x , p.y );
+    }
 
-*2) ;
-if( this.divided ) {
-this.northeast.show () ;
-this.northwest.show () ;
-this.southeast.show () ;
-this.southwest.show () ;
 }
 
-for (let p of this.points ){
-strokeWeight (4) ;
-point (p.x , p.y );
-}
-}
 }
