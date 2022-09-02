@@ -25,9 +25,9 @@ class Rectangle {
 
 class QuadTree {
     constructor(boundary, n) {
-        this.boundary = boundary; // Rectangle
-        this.capacity = n; // capacidad maxima de cada cuadrante
-        this.points = []; // vector , almacena los puntos a almacenar
+        this.boundary = boundary; 
+        this.capacity = n; 
+        this.points = []; 
         this.divided = false;
     }
 
