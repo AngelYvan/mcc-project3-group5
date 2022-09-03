@@ -8,7 +8,7 @@ function setup() {
     quadCanvas.parent("QuadTreeCanvas");
 
     let boundary = new Rectangle(200, 200, 200, 200);
-    qt = new QuadTree(boundary, 4);
+    qt = new QuadTree(boundary, 1);
 
     console.log(qt);
 
@@ -24,14 +24,27 @@ function setup() {
 
 
 function draw() {
+    if(mouseIsPressed) {
+        let p = new Point(mouseX, mouseY);
+        qt.insert(p);
+    }
     background(0);
     qt.show();
     stroke(0, 255, 0);
+    strokeWeight(1);
     rectMode(CENTER);
     let range = new Rectangle(mouseX, mouseY, 50, 50);
+    let points = qt.query(range);
+    stroke(200, 0, 0);
+    strokeWeight(1);
+    text("Found: "+ points.length, (range.x + 3 - range.w), (range.y - 10 - range.h));
+    
+    stroke(0, 255, 0);
+    strokeWeight(1);
+    fill(color(0, 255, 0, 30));
     rect(range.x, range.y, range.w * 2, range.h * 2);
   
-    let points = qt.query(range);
+    
     for (let p of points) {
         strokeWeight(6);
         point(p.x, p.y);

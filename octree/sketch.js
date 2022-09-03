@@ -35,8 +35,6 @@ function setup () {
         qt.insert (p);
     }
     qt.show ();
-
-
 }
 
 function draw(){
