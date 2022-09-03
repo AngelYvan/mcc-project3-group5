@@ -147,16 +147,13 @@ class OcTree {
     }
 
     insert ( point ){
-        console.log(point);
-        console.log(this.boundary);
-        console.log(!this.boundary.contains(point));
         if(!this.boundary.contains(point)) {
             return;
         }
         if(this.points.length < this.capacity) {
             this.points.push(point);
         } else {
-            console.log("Subdividiendo")
+            // console.log("Subdividiendo")
             this.subdivide();
             this.octant1.insert(point);
             this.octant2.insert(point);

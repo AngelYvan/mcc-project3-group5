@@ -1,6 +1,26 @@
 var easycam;
 let qt;
 let count = 0;
+let cuboidX = document.getElementById("cuboidX").value;
+let cuboidY = document.getElementById("cuboidY").value;
+let cuboidZ = document.getElementById("cuboidZ").value;
+
+function insertPoint(octree){
+    let pointX = document.getElementById("pointX").value;
+    let pointY = document.getElementById("pointY").value;
+    let pointZ = document.getElementById("pointZ").value;
+    let p = new Point (pointX , pointY, pointZ);
+    octree.insert (p);
+}
+
+function findPoints(){
+    cuboidX = document.getElementById("cuboidX").value;
+    cuboidY = document.getElementById("cuboidY").value;
+    cuboidZ = document.getElementById("cuboidZ").value;
+    let range = new Cuboid(cuboidX, cuboidY, cuboidZ, 400, 400, 400);
+    let points = qt.query(range);
+    document.getElementById("result").innerHTML = points.length
+}
 
 function setup () {
     createCanvas(windowWidth, windowHeight, WEBGL);
@@ -9,41 +29,25 @@ function setup () {
     
     let boundary = new Cuboid (400, 400, 400, 400, 400, 400);
     qt = new OcTree (boundary , 1);
-    
-    console.log (qt);
-    // for (let i=0; i < 3; i ++) {
-    //     let p = new Point (Math.random () * 799 , Math.random () * 799, Math.random () * 799);
-    //     qt.insert (p);
-    // }
-    let p = new Point (0, 0, 0);
-    qt.insert (p);
-    let p2 = new Point (40, 40, 40);
-    qt.insert (p2);
-    let p3 = new Point (80, 80, 80);
-    qt.insert (p3);
-    // background (0);
-    console.log(qt.points);
+
+    for (let i=0; i < 10; i ++) {
+        let p = new Point (Math.random () * 799 , Math.random () * 799, Math.random () * 799);
+        qt.insert (p);
+    }
     qt.show ();
+
+
 }
 
 function draw(){
     background (220);
     qt.show ();
+    push();
+    noFill();
+    stroke(0,250,0);
+    strokeWeight(4);
+    translate(cuboidX , cuboidY, cuboidZ);
+    let boxSize = 800;
+    box(boxSize);
+    pop();
 }
-
-// function draw () {
-//     background (0);
-//     qt.show ();
-    
-//     stroke (0 ,255 ,0);
-//     rectMode (CENTER);
-//     let range = new Rectangle (mouseX, mouseY, 50, 50);
-//     rect (range.x, range.y, range.w * 2, range.h * 2);
-//     let points = [];
-//     qt.query (range, points);
-    
-//     for (let p of points) {
-//         strokeWeight (4);
-//         point (p.x, p.y);
-//     }
-// }

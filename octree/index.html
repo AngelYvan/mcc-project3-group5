@@ -1,31 +1,47 @@
 <html>
 
-  <head>
-    <meta charset="utf-8"/>
-    <title>CameraStates_Basic</title>
+<head>
+  <meta charset="utf-8" />
+  <title>CameraStates_Basic</title>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+
+  <script src="p5.easycam.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body oncontextmenu="return false;">
+
+  <div id="hud" class="unselectable">
     
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
-   
-    <script src="p5.easycam.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  
-  <body oncontextmenu="return false;">
-  
-    <div id="hud" class="unselectable"> 
-      <ul>
-        <li>'1' copy State</li>
-        <li>'2' apply State</li>
-      </ul>
-    </div>
-    
-    <!-- <script src="CameraStates_Basic.js"></script> -->
-    <script src="sketch.js"></script>
-    <script src="octree.js"></script>
-    
-    
-  </body>
-  
+    <label>X: </label>
+    <input id="pointX" type="number" placeholder="Value" value="0">
+    <label>Y: </label>
+    <input id="pointY" type="number" placeholder="Value" value="0">
+    <label>Z: </label>
+    <input id="pointZ" type="number" placeholder="Value" value="0">
+    <button onclick="insertPoint(qt)">Insert</button>
+    <br/>
+    <br/>
+    <label>X: </label>
+    <input id="cuboidX" type="number" placeholder="Value" value="0">
+    <label>Y: </label>
+    <input id="cuboidY" type="number" placeholder="Value" value="0">
+    <label>Z: </label>
+    <input id="cuboidZ" type="number" placeholder="Value" value="0">
+    <button onclick="findPoints()">Find</button>
+    <br/>
+    <label>Found: </label>
+    <label id="result"></label>
+  </div>
+
+  <!-- <script src="CameraStates_Basic.js"></script> -->
+  <script src="sketch.js"></script>
+  <script src="octree.js"></script>
+
+
+</body>
+
 </html>
