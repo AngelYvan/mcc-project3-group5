@@ -177,13 +177,151 @@ Los quadtrees de borde  (al igual que los quadtrees PM) se utilizan para almacen
     \item Conjuntos disjuntos máximos
 \end{itemize}   
 
-\section{Metodologia y Desarrollo}
+\subsection{Octree}
 
-        
+\subsubsection{Que es Octree?}
+Un octree o árbol octal es una estructura en "árbol" de datos en la cual cada nodo interno tiene exactamente 8 "hijos". Las estructuras octree se usan mayormente para partir un espacio tridimensional, dividiéndolo recursivamente en ocho octantes. Las estructuras octree son las análogas tridimensionales de los quadtree bidimensionales.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{img/octr_abs.png}
+\caption{Representación Espacial de un Octree}
+\end{figure}
+
+\subsubsection{Representación Espacial de un Octree}
+En una estructura octree, cada nodo subdivide el espacio que representa en ocho octantes. En una región punto (PR) octree, el nodo almacena un punto tridimensional explícito, el cual es el "centro" de la subdivisión para ese nodo; el punto que define una de las esquinas para cada uno de los ocho hijos. En una octree MX, el punto de subdivisión es implícitamente el centro del espacio que el nodo representa. El nodo raíz de una PR octree puede representar un espacio infinito; el nodo raíz de una octree MX debe representar un espacio con límite finito para que los centros implícitos estén bien definidos. Las estructuras octree nunca se consideran árbol kd, ya que los árboles kd dividen en una dimensión mientras que las estructuras octree dividen alrededor de un punto. Los árboles kd además son siempre binarios, lo cual no se cumple para las estructuras octree.
+
+\subsubsection{Aplicaciones del algoritmo Octree}
+\begin{itemize}
+    \item Detección de colisiones eficiente en tres dimensiones
+    \item Determinación de cara oculta
+    \item Método multipolo rápido
+    \item Métodos no estructurados
+    \item Método de los elementos finitos
+    \item Octree de vóxeles escasos
+    \item Teorema de Bayes
+    \item Índice espacial
+\end{itemize}
+
+
+
+
+
+\section{Metodologia y Desarrollo}
+\subsection{Repositorio}
+
+Los archivos del proyecto se encuentran en el repositorio Github: https://github.com/AngelYvan/mcc-project3-group5
+
+Los enlaces  de las aplicaciones están en:
+
+\begin{itemize}
+    \item Quadtree:
+    \item Octree:
+\end{itemize}
+
+\subsection{Quadtree}
+
+\subsection{Octree}
+\subsubsection{Secciones de Codigo}
+
+En las secciones de Codigo en Github se encuentran las modificaciones para que Octree se:
+
+\begin{itemize}
+    \item insert(point) es la función para insertar un punto en el volumen del Octree
+    \item query(range, found) : Define el rango a analizar y el found para determinar la posicion del cubo verde y el conteo de puntos
+    \item show() mostrará el cubo verde y su conteo de puntos.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/oct_code.png}
+\caption{Lineas de codigo en Octree}
+\end{figure}
+
+
+
+\subsubsection{Configuración de puntos iniciales}
+
+En el archivo: sketch.js de la carpeta Octree, linea 33, se tiene:
+
+\begin{verbatim}
+
+
+    for (let i=0; i < 10; i ++) {
+        let p = new Point (Math.random () * 799 , Math.random () * 799, Math.random () * 799);
+        qt.insert (p);
+        }
+\end{verbatim}
+
+Tenemos la variable (puntero): i . Esta variable determina la cantidad inicial de puntos que tendrá nuestro cubo Octree. Con ello podemos determinar el numero maximo de puntos.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/oct_linea33.png}
+\caption{Linea 33 de sketch.js de Octree}
+\end{figure}
+
+
+
+\subsubsection{Funciones Principales}
+
+Para determinar en OCTREE el insertado y conteo de puntos, se realizó cajas de texto y botones de ejecución, y estos son:
+
+\begin{itemize}
+    \item Insert: Permite insertar el punto especifico en un sistema de coordenadas X, Y, Z.
+    \item Find (buscar): Permite determinar el area a buscar en un sistema de coordenadas X, Y, Z.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/oct_insertfind.png}
+\caption{Inserción y Buscar en Octree}
+\end{figure}
+
+\subsubsection{Conteo de Puntos}
+Configurando "Find", permitimos que el cuadrado verde determine su posición y realice el conteo de puntos en un volumen dado.
+
+\subsubsection{Inserción de Puntos}
+Si queremos añadir puntos. Solo debemos indicar la posición del punto en coordenadas y hacer clic en el botón INSERT.
+
+
 \section{Resultados}
 
+\subsection{Quadtree}
 
+\subsection{Octree}
 
+Configurando 100 puntos en Octree.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/oct_100.png}
+\caption{Configurando 100 puntos}
+\end{figure}
+
+Se tiene la siguiente figura:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/oct_100puntos.png}
+\caption{Octree con 100 puntos}
+\end{figure}
+
+Con el botón FIND podemos determinar cuantos puntos tenemos en el area especificada en verde en coordenadas X=0 , Y=0 , Z= 0.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/oct_100verde.png}
+\caption{Octree y detección de puntos en un volumen}
+\end{figure}
+
+Para las coordenadas X=400, Y=400, Z=400, se determina los siguientes puntos:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/oct_found100.png}
+\caption{100 puntos en area verde - Octree}
+\end{figure}
 
 \section{Conclusiones}
 
