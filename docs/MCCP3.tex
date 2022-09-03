@@ -215,11 +215,50 @@ Los archivos del proyecto se encuentran en el repositorio Github: https://github
 Los enlaces  de las aplicaciones están en:
 
 \begin{itemize}
-    \item Quadtree:
-    \item Octree:
+    \item Quadtree: http://mcc-project3-group5.herokuapp.com/
+    \item Octree: http://mcc-project3-group5.herokuapp.com/octree
 \end{itemize}
 
 \subsection{Quadtree}
+\subsubsection{Secciones de Codigo}
+
+En las secciones de Codigo en Github se encuentran las modificaciones para quadtree:
+
+\begin{itemize}
+    \item insert(point) es la funcion para asignar un punto en el espacio de coordenadas X, Y
+    \item query(range, found) : Funcion  para extraer la posición del puntero
+    \item show() mostrará la posición, y por consecuente la subdivision en areas mas pequeñas
+\end{itemize}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/quad_insertque.png}
+\caption{Insert, Query and Show en Quadtree}
+\end{figure}
+
+\subsubsection{Configuración de puntos iniciales}
+
+En el archivo: sketch.js de Quadtree, se tiene:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/quad_puntosinciales.png}
+\caption{Valores Iniciales en Quadtree}
+\end{figure}
+
+Se tiene configurado el puntero i como 3. Esto puede variarse para tener puntos iniciales ya preestablecidos.
+
+\subsubsection{Funcion Find}
+
+Mientras se mueve el puntero del mouse, la aplicación detectará en un area especifica la cantidad de puntos a detectar.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/quad_found.PNG}
+\caption{Find en Quadtree}
+\end{figure}
+
 
 \subsection{Octree}
 \subsubsection{Secciones de Codigo}
@@ -289,6 +328,15 @@ Si queremos añadir puntos. Solo debemos indicar la posición del punto en coord
 
 \subsection{Quadtree}
 
+Para Quadtree se tiene una aplicacion que permite detectar, generar puntos y redistribuir cuadrantes por cada accion del puntero. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/quad_result1.png}
+\caption{Resultado Quadtree}
+\end{figure}
+
+
 \subsection{Octree}
 
 Configurando 100 puntos en Octree.
@@ -341,6 +389,7 @@ Para las coordenadas X=400, Y=400, Z=400, se determina los siguientes puntos:
 \begin{itemize}
             \item 5 El Octree presenta una amplia posiblidades de uso para propiedades, como área de la superficie, masas, entre otras opciones.
 \end{itemize}
+
 	
 	
 	\end{document}
